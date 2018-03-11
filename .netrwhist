@@ -1,9 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =7
-let g:netrw_dirhist_1='/Users/nikhil/lambdaschool'
-let g:netrw_dirhist_2='/Users/nikhil/lambdaschool/Sprint-Challenge-Node-Express'
-let g:netrw_dirhist_3='/Users/nikhil/lambdaschool/Sprint-Challenge-Node-Express/src'
-let g:netrw_dirhist_4='/Users/nikhil'
-let g:netrw_dirhist_5='/Users/nikhil/lambdaschool'
-let g:netrw_dirhist_6='/Users/nikhil/lambdaschool/Sprint-Challenge-Node-Express'
-let g:netrw_dirhist_7='/Users/nikhil/lambdaschool/Sprint-Challenge-Node-Express/src'

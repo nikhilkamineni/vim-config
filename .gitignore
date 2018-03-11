@@ -1,0 +1,15 @@
+### Vim ###
+# swap
+.sw[a-p]
+.*.sw[a-p]
+# session
+Session.vim
+# temporary
+.netrwhist
+.netrwbook
+*~
+# auto-generated tag files
+tags
+
+### Git ###
+*.orig
