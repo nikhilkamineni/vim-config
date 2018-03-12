@@ -40,6 +40,7 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#282828 ctermbg=237
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven  guibg=#282828 ctermbg=236
 
 " THEME RELATED
+set background=dark
 let g:airline_powerline_fonts = 1
 let g:gruvbox_italic = 1
 let g:gruvbox_italicize_comments = 1
@@ -49,10 +50,9 @@ let g:gruvbox_contrast_dark = 'hard'
 " let g:gruvbox_invert_tabline = 1
 " let g:gruvbox_improved_strings = 1
 " let g:gruvbox_improved_warnings = 1
-set background=dark
 colorscheme gruvbox
 
-" SYNTASTIC 
+" SYNTASTIC
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -64,7 +64,7 @@ let g:syntastic_check_on_wq = 0
 " PRETTIER
 let g:prettier#config#bracket_spacing = 'true'
 
-" NETRW 
+" NETRW
 " let g:netrw_liststyle = 1
 map <Leader>e :Explore<CR>
 map <Leader>v :Vexplore<CR>
@@ -81,3 +81,8 @@ imap <C-t><C-c> :tabclose<CR>
 
 " Map 'gcc' to 'Ctrl + /'
 map <C-_> :Commentary<CR>
+
+" make search highlight all matches
+set hlsearch
+" Clear highlighted search items
+nnoremap <leader>h :nohlsearch<cr>
