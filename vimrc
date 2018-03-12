@@ -40,7 +40,6 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#282828 ctermbg=237
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven  guibg=#282828 ctermbg=236
 
 " THEME RELATED
-let g:indentLine_setColors = 0
 let g:airline_powerline_fonts = 1
 let g:gruvbox_italic = 1
 let g:gruvbox_italicize_comments = 1
@@ -50,9 +49,6 @@ let g:gruvbox_contrast_dark = 'hard'
 " let g:gruvbox_invert_tabline = 1
 " let g:gruvbox_improved_strings = 1
 " let g:gruvbox_improved_warnings = 1
-let g:nord_comment_brightness = 18
-let g:nord_italic = 1
-let g:nord_italic_comments = 1
 set background=dark
 colorscheme gruvbox
 
