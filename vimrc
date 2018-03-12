@@ -8,7 +8,7 @@ set visualbell
 set number
 set autochdir
 set backspace=indent,eol,start
-set guifont=Hack:h13
+set guifont=Source\ Code\ Pro\ Medium\ for\ Powerline:h14
 set t_Co=256
 set termguicolors
 set expandtab
@@ -17,11 +17,20 @@ set softtabstop=2
 set mouse=a
 set autoread
 set updatetime=100
+set clipboard^=unnamed,unnamedplus
 set noshowmode " Hides default status text for current mode
+set ttyfast " Faster redrawing
+set laststatus=2 "Always show statusline
+set showcmd " Show incomplete commands
 
 " FINDING FILES
-set path+=** " Search down into subfolders / Enables tabbing for file-related tasks
-set wildmenu " Command line completion
+set path+=**                " Search down into subfolders/Enables tabbing
+set wildmenu                " Command line completion
+set wildmode=list:longest   " Complete files like a shell
+set ignorecase              " Make search case insensitive
+set hlsearch                " make search highlight all matches
+set incsearch
+set diffopt+=vertical
 
 " Trigger `autoread` when files changes on disk
 autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() != 'c' | checktime | endif
@@ -49,7 +58,7 @@ let g:gruvbox_contrast_dark = 'hard'
 " let g:gruvbox_invert_indent_guides = 1
 " let g:gruvbox_invert_tabline = 1
 " let g:gruvbox_improved_strings = 1
-" let g:gruvbox_improved_warnings = 1
+let g:gruvbox_improved_warnings = 1
 colorscheme gruvbox
 
 " SYNTASTIC
@@ -82,7 +91,5 @@ imap <C-t><C-c> :tabclose<CR>
 " Map 'gcc' to 'Ctrl + /'
 map <C-_> :Commentary<CR>
 
-" make search highlight all matches
-set hlsearch
 " Clear highlighted search items
 nnoremap <leader>h :nohlsearch<cr>
