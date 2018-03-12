@@ -15,5 +15,4 @@ To enable italics in iTerm:
 Notes:
 
     - 'Gruvbox' colorscheme (and config info) can be found here: https://github.com/morhetz/gruvbox
-    - `vim-gitgutter` and `vim-prettier` are added as git submodules
 
