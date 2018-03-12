@@ -23,7 +23,7 @@ set noshowmode " Hides default status text for current mode
 set path+=** " Search down into subfolders / Enables tabbing for file-related tasks
 set wildmenu " Command line completion
 
-" Trigger `autoread` when files changes on disk 
+" Trigger `autoread` when files changes on disk
 autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() != 'c' | checktime | endif
 
 " Notification after file change
@@ -65,7 +65,7 @@ let g:syntastic_check_on_wq = 0
 let g:prettier#config#bracket_spacing = 'true'
 
 " NETRW 
-let g:netrw_liststyle = 3
+" let g:netrw_liststyle = 1
 map <Leader>e :Explore<CR>
 map <Leader>v :Vexplore<CR>
 map <Leader>s :Sexplore<CR>
@@ -78,3 +78,6 @@ map <C-t><C-n> :tabnew<CR>
 imap <C-t><C-n> :tabnew<CR>
 map <C-t><C-c> :tabclose<CR>
 imap <C-t><C-c> :tabclose<CR>
+
+" Map 'gcc' to 'Ctrl + /'
+map <C-_> :Commentary<CR>
