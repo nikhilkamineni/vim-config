@@ -1,34 +1,32 @@
 call pathogen#helptags()
 execute pathogen#infect()
+syntax on
+let g:TerminusITerm=1
 set showmatch
+set nocompatible
 set visualbell
 set number
-set ruler
 set autochdir
-syntax on
-filetype plugin indent on
-let g:airline_powerline_fonts = 1
+set backspace=indent,eol,start
 set guifont=Hack:h13
-set background=dark
 set t_Co=256
 set termguicolors
 set expandtab
 set shiftwidth=2
 set softtabstop=2
 set mouse=a
-let g:gruvbox_contrast_dark = 'hard'
 set autoread
-let g:TerminusITerm=1
-let laststatus=2
-set noshowmode
-colorscheme gruvbox
+set updatetime=100
+set noshowmode " Hides default status text for current mode
 
-"||||| Triger `autoread` when files changes on disk ||||||
-" https://unix.stackexchange.com/questions/149209/refresh-changed-content-of-file-opened-in-vim/383044#383044
-" https://vi.stackexchange.com/questions/13692/prevent-focusgained-autocmd-running-in-command-line-editing-mode
+" FINDING FILES
+set path+=** " Search down into subfolders / Enables tabbing for file-related tasks
+set wildmenu " Command line completion
+
+" Trigger `autoread` when files changes on disk 
 autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() != 'c' | checktime | endif
+
 " Notification after file change
-" https://vi.stackexchange.com/questions/13091/autocmd-event-for-autoread
 autocmd FileChangedShellPost *
   \ echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
 
@@ -41,8 +39,24 @@ let g:indent_guides_auto_colors = 0
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#282828 ctermbg=237
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven  guibg=#282828 ctermbg=236
 
+" THEME RELATED
+let g:indentLine_setColors = 0
+let g:airline_powerline_fonts = 1
+let g:gruvbox_italic = 1
+let g:gruvbox_italicize_comments = 1
+let g:gruvbox_italicize_strings = 1
+let g:gruvbox_contrast_dark = 'hard'
+" let g:gruvbox_invert_indent_guides = 1
+" let g:gruvbox_invert_tabline = 1
+" let g:gruvbox_improved_strings = 1
+" let g:gruvbox_improved_warnings = 1
+let g:nord_comment_brightness = 18
+let g:nord_italic = 1
+let g:nord_italic_comments = 1
+set background=dark
+colorscheme gruvbox
 
-" Syntastic config
+" SYNTASTIC 
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -50,18 +64,18 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-"|||||||||||||||||||||||||||||||||||||||||||
 
+" PRETTIER
 let g:prettier#config#bracket_spacing = 'true'
 
 " NETRW 
 let g:netrw_liststyle = 3
-map <C-n><C-e> :Explore<CR>
-map <C-n><C-v> :Vexplore<CR>
-map <C-n><C-s> :Sexplore<CR>
-map <C-n><C-l> :Lexplore<CR>
-map <C-n><C-r> :Rexplore<CR>
-map <C-n><C-t> :Texplore<CR>
+map <Leader>e :Explore<CR>
+map <Leader>v :Vexplore<CR>
+map <Leader>s :Sexplore<CR>
+map <Leader>l :Lexplore<CR>
+map <Leader>r :Rexplore<CR>
+map <Leader>t :Texplore<CR>
 
 " TABS
 map <C-t><C-n> :tabnew<CR>
