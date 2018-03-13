@@ -17,7 +17,7 @@ set softtabstop=2
 set mouse=a
 set autoread
 set updatetime=100
-set clipboard^=unnamed,unnamedplus
+set clipboard=unnamed
 set noshowmode " Hides default status text for current mode
 set ttyfast " Faster redrawing
 set laststatus=2 "Always show statusline
@@ -48,6 +48,13 @@ let g:indent_guides_auto_colors = 0
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#282828 ctermbg=237
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven  guibg=#282828 ctermbg=236
 
+" RAINBOW PARENS
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
+let g:rbpt_max = 16
+
 " THEME RELATED
 set background=dark
 let g:airline_powerline_fonts = 1
@@ -74,7 +81,7 @@ let g:syntastic_check_on_wq = 0
 let g:prettier#config#bracket_spacing = 'true'
 
 " NETRW
-" let g:netrw_liststyle = 1
+let g:netrw_liststyle = 3
 map <Leader>e :Explore<CR>
 map <Leader>v :Vexplore<CR>
 map <Leader>s :Sexplore<CR>
