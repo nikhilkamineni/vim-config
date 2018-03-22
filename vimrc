@@ -8,7 +8,7 @@ set visualbell
 set number
 set autochdir
 set backspace=indent,eol,start
-set guifont=Source\ Code\ Pro\ Medium\ for\ Powerline:h14
+set guifont=Meslo\ LG\ S\ DZ\ Regular\ for\ Powerline:h13
 set t_Co=256
 set termguicolors
 set expandtab
@@ -48,16 +48,15 @@ let g:indent_guides_auto_colors = 0
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#282828 ctermbg=237
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven  guibg=#282828 ctermbg=236
 
-" RAINBOW PARENS
-au VimEnter * RainbowParenthesesToggle
-au Syntax * RainbowParenthesesLoadRound
-au Syntax * RainbowParenthesesLoadSquare
-au Syntax * RainbowParenthesesLoadBraces
-let g:rbpt_max = 16
+" AIRLINE
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:achangedirline#extensions#tabline#formatter = 'unique_tail'
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = ' |'
 
 " THEME RELATED
 set background=dark
-let g:airline_powerline_fonts = 1
 let g:gruvbox_italic = 1
 let g:gruvbox_italicize_comments = 1
 let g:gruvbox_italicize_strings = 1
@@ -81,7 +80,11 @@ let g:syntastic_check_on_wq = 0
 let g:prettier#config#bracket_spacing = 'true'
 
 " NETRW
-let g:netrw_liststyle = 3
+let g:netrw_liststyle=3
+let g:netrw_alto = 1
+let g:netrw_altv = 1
+let g:netrw_altfile=0
+let g:netrw_hide=1
 map <Leader>e :Explore<CR>
 map <Leader>v :Vexplore<CR>
 map <Leader>s :Sexplore<CR>
@@ -100,3 +103,16 @@ map <C-_> :Commentary<CR>
 
 " Clear highlighted search items
 nnoremap <leader>h :nohlsearch<cr>
+
+" Toggle line numbers
+map <leader>n :set invnumber<CR>
+
+map <ScrollWheelUp> <C-Y>
+map <S-ScrollWheelUp> <C-U>
+map <ScrollWheelDown> <C-E>
+map <S-ScrollWheelDown> <C-D>
+
+" Avoid creating swap files in cwd
+set backupdir=~/.vim/backup//
+set directory=~/.vim/swap//
+set undodir=~/.vim/undo//

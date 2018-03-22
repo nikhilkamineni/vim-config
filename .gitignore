@@ -13,3 +13,7 @@ tags
 
 ### Git ###
 *.orig
+
+backup/
+swap/
+undo/

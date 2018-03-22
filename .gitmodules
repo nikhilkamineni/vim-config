@@ -7,6 +7,24 @@
 [submodule "bundle/gruvbox"]
 	path = bundle/gruvbox
 	url = https://github.com/nikhilkamineni/gruvbox.git
-[submodule "bundle/rainbow_parentheses.vim"]
-	path = bundle/rainbow_parentheses.vim
-	url = https://github.com/kien/rainbow_parentheses.vim.git
+[submodule "bundle/vim-monokai-pro"]
+	path = bundle/vim-monokai-pro
+	url = https://github.com/Erichain/vim-monokai-pro.git
+[submodule "bundle/nord-vim"]
+	path = bundle/nord-vim
+	url = https://github.com/nikhilkamineni/nord-vim.git
+[submodule "bundle/vim-kolor"]
+	path = bundle/vim-kolor
+	url = https://github.com/zeis/vim-kolor.git
+[submodule "bundle/dracula-theme"]
+	path = bundle/dracula-theme
+	url = https://github.com/dracula/vim.git
+[submodule "bundle/vim-material-theme"]
+	path = bundle/vim-material-theme
+	url = https://github.com/jdkanani/vim-material-theme
+[submodule "bundle/onedark.vim"]
+	path = bundle/onedark.vim
+	url = https://github.com/joshdick/onedark.vim.git
+[submodule "bundle/vim-unimpaired"]
+	path = bundle/vim-unimpaired
+	url = git://github.com/tpope/vim-unimpaired.git
