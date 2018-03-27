@@ -28,3 +28,12 @@
 [submodule "bundle/vim-unimpaired"]
 	path = bundle/vim-unimpaired
 	url = git://github.com/tpope/vim-unimpaired.git
+[submodule "bundle/vim-colorschemes"]
+	path = bundle/vim-colorschemes
+	url = https://github.com/flazz/vim-colorschemes.git
+[submodule "bundle/setcolors"]
+	path = bundle/setcolors
+	url = https://github.com/felixhummel/setcolors.vim.git
+[submodule "bundle/tabline.vim"]
+	path = bundle/tabline.vim
+	url = git://github.com/mkitt/tabline.vim.git
