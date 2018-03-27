@@ -9,7 +9,7 @@ set number
 set autochdir
 set backspace=indent,eol,start
 set guifont=Meslo\ LG\ S\ DZ\ Regular\ for\ Powerline:h13
-set t_Co=256
+" set t_Co=256
 set termguicolors
 set expandtab
 set shiftwidth=2
@@ -22,6 +22,13 @@ set noshowmode " Hides default status text for current mode
 set ttyfast " Faster redrawing
 set laststatus=2 "Always show statusline
 set showcmd " Show incomplete commands
+set hidden
+
+" TABLINE
+set showtabline=2
+hi TabLine      ctermfg=Black  ctermbg=Green     cterm=NONE
+hi TabLineFill  ctermfg=Black  ctermbg=Green     cterm=NONE
+hi TabLineSel   ctermfg=White  ctermbg=DarkBlue  cterm=NONE
 
 " FINDING FILES
 set path+=**                " Search down into subfolders/Enables tabbing
@@ -48,19 +55,12 @@ let g:indent_guides_auto_colors = 0
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#282828 ctermbg=237
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven  guibg=#282828 ctermbg=236
 
-" AIRLINE
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:achangedirline#extensions#tabline#formatter = 'unique_tail'
-let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#left_alt_sep = ' |'
-
 " THEME RELATED
 set background=dark
+let g:gruvbox_contrast_dark = 'hard'
 let g:gruvbox_italic = 1
 let g:gruvbox_italicize_comments = 1
 let g:gruvbox_italicize_strings = 1
-let g:gruvbox_contrast_dark = 'hard'
 " let g:gruvbox_invert_indent_guides = 1
 " let g:gruvbox_invert_tabline = 1
 " let g:gruvbox_improved_strings = 1
@@ -91,12 +91,16 @@ map <Leader>s :Sexplore<CR>
 map <Leader>l :Lexplore<CR>
 map <Leader>r :Rexplore<CR>
 map <Leader>t :Texplore<CR>
+set splitbelow
+set splitright
 
 " TABS
-map <C-t><C-n> :tabnew<CR>
-imap <C-t><C-n> :tabnew<CR>
-map <C-t><C-c> :tabclose<CR>
-imap <C-t><C-c> :tabclose<CR>
+map <C-w><C-t> :tabnew<CR>
+imap <C-w><C-t> :tabnew<CR>
+map <C-w><C-,> :tabp<CR>
+imap <C-w><C-,> :tabp<CR>
+map <C-w><C-.> :tabn<CR>
+imap <C-w><C-.> :tabn<CR>
 
 " Map 'gcc' to 'Ctrl + /'
 map <C-_> :Commentary<CR>
