@@ -6,10 +6,10 @@ set showmatch
 set nocompatible
 set visualbell
 set number
-set autochdir
+" set autochdir
 set backspace=indent,eol,start
 set guifont=Meslo\ LG\ S\ DZ\ Regular\ for\ Powerline:h13
-" set t_Co=256
+set t_Co=256
 set termguicolors
 set expandtab
 set shiftwidth=2
@@ -22,7 +22,6 @@ set noshowmode " Hides default status text for current mode
 set ttyfast " Faster redrawing
 set laststatus=2 "Always show statusline
 set showcmd " Show incomplete commands
-set hidden
 
 " TABLINE
 set showtabline=2
@@ -80,19 +79,33 @@ let g:syntastic_check_on_wq = 0
 let g:prettier#config#bracket_spacing = 'true'
 
 " NETRW
-let g:netrw_liststyle=3
-let g:netrw_alto = 1
-let g:netrw_altv = 1
-let g:netrw_altfile=0
-let g:netrw_hide=1
+" let g:netrw_liststyle=3
+" let g:netrw_alto = 1
+" let g:netrw_altv = 1
+" let g:netrw_altfile=0
+" let g:netrw_hide=1
 map <Leader>e :Explore<CR>
 map <Leader>v :Vexplore<CR>
 map <Leader>s :Sexplore<CR>
-map <Leader>l :Lexplore<CR>
-map <Leader>r :Rexplore<CR>
+" map <Leader>l :Lexplore<CR>
+" map <Leader>r :Rexplore<CR>
 map <Leader>t :Texplore<CR>
+map <Leader>b :bd<CR>
+
 set splitbelow
 set splitright
+
+" DIRVISH
+let g:loaded_netrwPlugin = 1
+command! -nargs=? -complete=dir Explore Dirvish <args>
+command! -nargs=? -complete=dir Texplore tabnew | silent Dirvish <args>
+command! -nargs=? -complete=dir Sexplore split | silent Dirvish <args>
+command! -nargs=? -complete=dir Vexplore vsplit | silent Dirvish <args>
+
+
+" Map gh to toggle show hidden files
+nnoremap <buffer> gh :call ToggleDotfiles()<CR>
+
 
 " TABS
 map <C-w><C-t> :tabnew<CR>
