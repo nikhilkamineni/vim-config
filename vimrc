@@ -110,10 +110,10 @@ nnoremap <buffer> gh :call ToggleDotfiles()<CR>
 " TABS
 map <C-w><C-t> :tabnew<CR>
 imap <C-w><C-t> :tabnew<CR>
-map <C-w><C-,> :tabp<CR>
-imap <C-w><C-,> :tabp<CR>
-map <C-w><C-.> :tabn<CR>
-imap <C-w><C-.> :tabn<CR>
+nnoremap <C-h> :tabprevious<CR>
+nnoremap <C-l> :tabnext<CR>
+nnoremap <silent> <S-h> :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
+nnoremap <silent> <S-l> :execute 'silent! tabmove ' . (tabpagenr()+1)<CR>
 
 " Map 'gcc' to 'Ctrl + /'
 map <C-_> :Commentary<CR>
