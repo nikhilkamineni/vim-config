@@ -1,4 +1,8 @@
 ## Installation Instructions
+1. Remove existing config:
+
+    ```rm -rf ~/.vim```
+
 1. Install configuration:
 
     ```git clone https://github.com/nikhilkamineni/vim-config.git ~/.vim```
