@@ -30,33 +30,40 @@ call minpac#add('tpope/vim-vinegar')
 " Colorschemes
 call minpac#add('nikhilkamineni/vim-gruvbox8', {'type': 'opt'})
 call minpac#add('nikhilkamineni/Spacegray.vim', {'type': 'opt'})
+call minpac#add('srcery-colors/srcery-vim', {'type': 'opt'})
 call minpac#add('dracula/vim', {'name': 'dracula', 'type': 'opt'})
 
 command! PackUpdate call minpac#update()
 command! PackClean call minpac#clean()
 
 syntax on
-set showmatch
-set nocompatible
-set visualbell
 set number
 " set autochdir
-" set backspace=indent,eol,start
-set guifont=Hack:h14
-" set t_Co=256
-set termguicolors
 set expandtab
 set shiftwidth=2
 set softtabstop=2
 set mouse=a
 set autoread
 set updatetime=100
-set clipboard=unnamed
+" set guifont=Hack:h14
+set laststatus=2 "Always show statusline
+" set t_Co=256
+set termguicolors
+" set hidden
+set showmatch
 set noshowmode " Hides default status text for current mode
+set nocompatible
+set visualbell
 set ttyfast " Faster redrawing
 set lazyredraw
-set laststatus=2 "Always show statusline
+set clipboard=unnamed
 set showcmd " Show incomplete commands
+" set backspace=indent,eol,start
+
+" CODE FOLDING
+set foldmethod=indent
+set foldlevel=99
+nnoremap <space> za
 
 " TABLINE
 set showtabline=2
@@ -81,10 +88,15 @@ autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() != 'c' | checkti
 autocmd FileChangedShellPost *
   \ echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
 
-" THEME RELATED
-let &t_ut=''
-" set cursorline
+"""""""""""""""""
+" THEME RELATED "
+"""""""""""""""""
 set background=dark
+" set cursorline
+colorscheme gruvbox8
+let &t_ut=''
+
+" Gruvbox
 " let g:gruvbox_contrast_dark = 'hard'
 let g:gruvbox_italic = 1
 let g:gruvbox_italicize_comments = 1
@@ -95,23 +107,19 @@ let g:gruvbox_italicize_strings = 1
 " let g:gruvbox_invert_tabline = 1
 " let g:gruvbox_improved_strings = 1
 " let g:gruvbox_improved_warnings = 1
-colorscheme gruvbox8
-let g:airline_theme="hybrid"
+if g:colors_name == "gruvbox8"
+  let g:airline_theme="hybrid"
+endif
 
-" LESS Files auto-compile
-function! CompileLessFile()
-  let current = expand('%') " Path to current .less file's name
-  let target = expand('%:r').".css" " Path to target .css file
-  let shell_command = "!lessc ".current." ".target
-  echo "Compiling less file..."
-  if (executable('lessc'))
-    execute shell_command
-  endif
-endfunction
+" Spacegray
+if g:colors_name == "spacegray"
+  let g:airline_theme="raven"
+endif
+let g:spacegray_use_italics = 1
+" let g:spacegray_low_contrast = 1
+" let g:spacegray_underline_search = 1
 
-autocmd FileWritePost,BufWritePost *.less :call CompileLessFile()
 
-map <leader>l :call CompileLessFile()<CR>
 
 " NETRW
 map <silent> <Leader>e :Explore<CR>
@@ -123,11 +131,6 @@ map <Leader>b :bd<CR>
 
 set splitbelow
 set splitright
-
-" CODE FOLDING
-set foldmethod=indent
-set foldlevel=99
-nnoremap <space> za
 
 " DIRVISH
 let g:loaded_netrwPlugin = 1
@@ -212,3 +215,20 @@ map <S-ScrollWheelDown> <C-D>
 " Change cursor shape in insert mode
 let &t_SI = "\<Esc>]1337;CursorShape=1\x7"
 let &t_EI = "\<Esc>]1337;CursorShape=0\x7"
+
+
+"""""""""""""""""""""""""""
+" LESS Files auto-compile "
+"""""""""""""""""""""""""""
+function! CompileLessFile()
+  let current = expand('%') " Path to current .less file's name
+  let target = expand('%:r').".css" " Path to target .css file
+  let shell_command = "!lessc ".current." ".target
+  echo "Compiling less file..."
+  if (executable('lessc'))
+    execute shell_command
+  endif
+endfunction
+
+autocmd FileWritePost,BufWritePost *.less :call CompileLessFile()
+
