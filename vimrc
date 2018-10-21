@@ -20,6 +20,7 @@ call minpac#add('lifepillar/vim-cheat40')
 call minpac#add('tpope/vim-commentary')
 call minpac#add('tpope/vim-fugitive')
 call minpac#add('tpope/vim-repeat')
+call minpac#add('tpope/vim-scriptease')
 call minpac#add('tpope/vim-sensible')
 call minpac#add('tpope/vim-sleuth')
 call minpac#add('tpope/vim-surround')
@@ -95,7 +96,22 @@ let g:gruvbox_italicize_strings = 1
 " let g:gruvbox_improved_strings = 1
 " let g:gruvbox_improved_warnings = 1
 colorscheme gruvbox8
-let g:airline_theme='base16'
+let g:airline_theme="hybrid"
+
+" LESS Files auto-compile
+function! CompileLessFile()
+  let current = expand('%') " Path to current .less file's name
+  let target = expand('%:r').".css" " Path to target .css file
+  let shell_command = "!lessc ".current." ".target
+  echo "Compiling less file..."
+  if (executable('lessc'))
+    execute shell_command
+  endif
+endfunction
+
+autocmd FileWritePost,BufWritePost *.less :call CompileLessFile()
+
+map <leader>l :call CompileLessFile()<CR>
 
 " NETRW
 map <silent> <Leader>e :Explore<CR>
