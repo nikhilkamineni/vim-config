@@ -93,7 +93,7 @@ autocmd FileChangedShellPost *
 """""""""""""""""
 set background=dark
 " set cursorline
-colorscheme gruvbox8
+colorscheme srcery
 let &t_ut=''
 
 " Gruvbox
@@ -119,6 +119,11 @@ let g:spacegray_use_italics = 1
 " let g:spacegray_low_contrast = 1
 " let g:spacegray_underline_search = 1
 
+" Srcery
+if g:colors_name == "srcery"
+  let g:airline_theme="raven"
+  highlight EndOfBuffer ctermbg=242 ctermfg=242 guibg=#1C1B19 guifg=#1C1B19 cterm=NONE gui=NONE
+endif
 
 
 " NETRW
