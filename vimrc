@@ -15,6 +15,8 @@ call minpac#add('mkitt/tabline.vim')
 call minpac#add('justinmk/vim-dirvish')
 call minpac#add('ervandew/supertab')
 call minpac#add('lifepillar/vim-cheat40')
+call minpac#add('JamshedVesuna/vim-markdown-preview')
+call minpac#add('suy/vim-context-commentstring')
 
 " Tpope
 call minpac#add('tpope/vim-commentary')
@@ -58,7 +60,7 @@ set ttyfast " Faster redrawing
 set lazyredraw
 set clipboard=unnamed
 set showcmd " Show incomplete commands
-" set backspace=indent,eol,start
+filetype plugin on
 
 " CODE FOLDING
 set foldmethod=indent
@@ -88,13 +90,14 @@ autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() != 'c' | checkti
 autocmd FileChangedShellPost *
   \ echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
 
+
 """""""""""""""""
 " THEME RELATED "
 """""""""""""""""
 set background=dark
 " set cursorline
-colorscheme srcery
 let &t_ut=''
+colorscheme srcery
 
 " Gruvbox
 " let g:gruvbox_contrast_dark = 'hard'
@@ -120,20 +123,28 @@ let g:spacegray_use_italics = 1
 " let g:spacegray_underline_search = 1
 
 " Srcery
+let g:srcery_italic = 1
 if g:colors_name == "srcery"
   let g:airline_theme="raven"
   highlight EndOfBuffer ctermbg=242 ctermfg=242 guibg=#1C1B19 guifg=#1C1B19 cterm=NONE gui=NONE
 endif
 
 
-" NETRW
+" Set airline theme for specific colorschemes
+if g:colors_name == "spacegray"
+  let g:airline_theme="raven"
+endif
+
+if g:colors_name == "gruvbox8"
+  let g:airline_theme="hybrid"
+endif
+
+" EXPLORER SHORTCUTS
 map <silent> <Leader>e :Explore<CR>
 map <silent> <Leader>v :vsplit <bar> Explore<CR>
 map <silent> <Leader>s :Sexplore<CR>
 map <silent> <Leader>t :Texplore<CR>
-
 map <Leader>b :bd<CR>
-
 set splitbelow
 set splitright
 
@@ -169,8 +180,6 @@ tnoremap <silent> <C-w><C-l> <C-\><C-n><C-w>l
 tnoremap <C-h> <C-\><C-n> <bar> :tabnext<CR>
 tnoremap <C-l> <C-\><C-n> <bar> :tabprevious<CR>
 
-" Map 'gcc' to 'Ctrl + /'
-map <C-_> :Commentary<CR>
 
 " Clear highlighted search items
 nnoremap <silent> <ESC><ESC> :let @/ = ""<cr>
@@ -180,8 +189,6 @@ map <leader>n :set invnumber<CR>
 
 " ALE
 let g:airline#extensions#ale#enabled = 1
-let g:ale_completion_enabled = 1
-let g:ale_completion_delay = 200
 let g:ale_fixers = {
 \  'javascript': ['prettier', 'eslint'],
 \  'c': ['clang-format', 'trim_whitespace'],
@@ -225,6 +232,7 @@ let &t_EI = "\<Esc>]1337;CursorShape=0\x7"
 """""""""""""""""""""""""""
 " LESS Files auto-compile "
 """""""""""""""""""""""""""
+" Set up function to Compile less to a css file in the same folder
 function! CompileLessFile()
   let current = expand('%') " Path to current .less file's name
   let target = expand('%:r').".css" " Path to target .css file
@@ -235,5 +243,6 @@ function! CompileLessFile()
   endif
 endfunction
 
+" Call CompileLessFile() after writing a file or buffer with .less extension
 autocmd FileWritePost,BufWritePost *.less :call CompileLessFile()
 
