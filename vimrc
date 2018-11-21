@@ -159,8 +159,8 @@ map <silent> <Leader>V :vsplit <bar> Dirvish %<CR>
 nnoremap <buffer> gh :call ToggleDotfiles()<CR>
 
 " TABS
-map <C-w><C-t> :tabnew<CR>
-imap <C-w><C-t> :tabnew<CR>
+map <silent> <C-t> :tabnew<CR>
+imap <silent> <C-t> :tabnew<CR>
 nnoremap <C-h> :tabprevious<CR>
 nnoremap <C-l> :tabnext<CR>
 nnoremap <silent> <S-h> :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
