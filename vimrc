@@ -33,8 +33,15 @@ call minpac#add('tpope/vim-vinegar')
 call minpac#add('nikhilkamineni/vim-gruvbox8', {'type': 'opt'})
 call minpac#add('nikhilkamineni/Spacegray.vim', {'type': 'opt'})
 call minpac#add('srcery-colors/srcery-vim', {'type': 'opt'})
-call minpac#add('dracula/vim', {'name': 'dracula', 'type': 'opt'})
+call minpac#add('bluz71/vim-moonfly-colors', {'type': 'opt'})
 
+" fzf
+call minpac#add('junegunn/fzf.vim')
+set rtp+=/usr/local/opt/fzf
+noremap <silent> <C-p> :GFiles<CR>
+noremap <silent> <C-b> :Buffers<CR>
+noremap <silent> <C-m> :Marks<CR>
+noremap <silent> <C-f> :Lines<CR>
 command! PackUpdate call minpac#update()
 command! PackClean call minpac#clean()
 
@@ -48,12 +55,11 @@ set mouse=a
 set autoread
 set updatetime=100
 " set guifont=Hack:h14
-set laststatus=2 "Always show statusline
+" set laststatus=2 "Always show statusline
 " set t_Co=256
 set termguicolors
 " set hidden
 set showmatch
-set noshowmode " Hides default status text for current mode
 set nocompatible
 set visualbell
 set ttyfast " Faster redrawing
@@ -97,7 +103,8 @@ autocmd FileChangedShellPost *
 set background=dark
 " set cursorline
 let &t_ut=''
-colorscheme srcery
+let g:srcery_italic = 1
+colorscheme gruvbox8
 
 " Gruvbox
 " let g:gruvbox_contrast_dark = 'hard'
@@ -111,7 +118,7 @@ let g:gruvbox_italicize_strings = 1
 " let g:gruvbox_improved_strings = 1
 " let g:gruvbox_improved_warnings = 1
 if g:colors_name == "gruvbox8"
-  let g:airline_theme="hybrid"
+  let g:airline_theme="minimalist"
 endif
 
 " Spacegray
@@ -123,21 +130,11 @@ let g:spacegray_use_italics = 1
 " let g:spacegray_underline_search = 1
 
 " Srcery
-let g:srcery_italic = 1
 if g:colors_name == "srcery"
-  let g:airline_theme="raven"
+  " let g:airline_theme="lucius"
   highlight EndOfBuffer ctermbg=242 ctermfg=242 guibg=#1C1B19 guifg=#1C1B19 cterm=NONE gui=NONE
 endif
 
-
-" Set airline theme for specific colorschemes
-if g:colors_name == "spacegray"
-  let g:airline_theme="raven"
-endif
-
-if g:colors_name == "gruvbox8"
-  let g:airline_theme="hybrid"
-endif
 
 " EXPLORER SHORTCUTS
 map <silent> <Leader>e :Explore<CR>
@@ -246,3 +243,4 @@ endfunction
 " Call CompileLessFile() after writing a file or buffer with .less extension
 autocmd FileWritePost,BufWritePost *.less :call CompileLessFile()
 
+set noshowmode " Hides default status text for current mode
