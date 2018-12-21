@@ -3,26 +3,21 @@ packadd minpac
 call minpac#init()
 call minpac#add('k-takata/minpac', {'type':'opt'})
 
-call minpac#add('w0rp/ale')
 call minpac#add('jiangmiao/auto-pairs')
-call minpac#add('mattn/emmet-vim')
+" call minpac#add('mattn/emmet-vim')
 call minpac#add('Yggdroot/indentLine')
 call minpac#add('vim-airline/vim-airline')
 call minpac#add('vim-airline/vim-airline-themes')
 call minpac#add('airblade/vim-gitgutter')
-call minpac#add('sheerun/vim-polyglot')
+" call minpac#add('sheerun/vim-polyglot')
 call minpac#add('mkitt/tabline.vim')
-call minpac#add('justinmk/vim-dirvish')
-call minpac#add('ervandew/supertab')
-call minpac#add('lifepillar/vim-cheat40')
-call minpac#add('JamshedVesuna/vim-markdown-preview')
-call minpac#add('suy/vim-context-commentstring')
+" call minpac#add('justinmk/vim-dirvish')
+" call minpac#add('ervandew/supertab')
 
 " Tpope
 call minpac#add('tpope/vim-commentary')
 call minpac#add('tpope/vim-fugitive')
 call minpac#add('tpope/vim-repeat')
-call minpac#add('tpope/vim-scriptease')
 call minpac#add('tpope/vim-sensible')
 call minpac#add('tpope/vim-sleuth')
 call minpac#add('tpope/vim-surround')
@@ -33,15 +28,23 @@ call minpac#add('tpope/vim-vinegar')
 call minpac#add('nikhilkamineni/vim-gruvbox8', {'type': 'opt'})
 call minpac#add('nikhilkamineni/Spacegray.vim', {'type': 'opt'})
 call minpac#add('srcery-colors/srcery-vim', {'type': 'opt'})
-call minpac#add('bluz71/vim-moonfly-colors', {'type': 'opt'})
 
 " fzf
 call minpac#add('junegunn/fzf.vim')
-set rtp+=/usr/local/opt/fzf
+
+if has('unix')
+  set rtp+=~/.fzf
+endif
+
+if has('macunix')
+  set rtp+=/usr/local/opt/fzf
+endif
+
 noremap <silent> <C-p> :GFiles<CR>
 noremap <silent> <C-b> :Buffers<CR>
 noremap <silent> <C-m> :Marks<CR>
 noremap <silent> <C-f> :Lines<CR>
+
 command! PackUpdate call minpac#update()
 command! PackClean call minpac#clean()
 
@@ -146,17 +149,17 @@ set splitbelow
 set splitright
 
 " DIRVISH
-let g:loaded_netrwPlugin = 1
-command! -nargs=? -complete=dir Explore Dirvish <args>
-command! -nargs=? -complete=dir Texplore tabnew | silent Dirvish <args>
-command! -nargs=? -complete=dir Sexplore split | silent Dirvish <args>
-command! -nargs=? -complete=dir Vexplore vsplit | silent Dirvish <args>
-map <silent> <Leader>E :Dirvish %<CR>
-map <silent> <Leader>T :tabnew <bar> Dirvish %<CR>
-map <silent> <Leader>S :split <bar> Dirvish %<CR>
-map <silent> <Leader>V :vsplit <bar> Dirvish %<CR>
-" Map gh to toggle show hidden files
-nnoremap <buffer> gh :call ToggleDotfiles()<CR>
+" let g:loaded_netrwPlugin = 1
+" command! -nargs=? -complete=dir Explore Dirvish <args>
+" command! -nargs=? -complete=dir Texplore tabnew | silent Dirvish <args>
+" command! -nargs=? -complete=dir Sexplore split | silent Dirvish <args>
+" command! -nargs=? -complete=dir Vexplore vsplit | silent Dirvish <args>
+" map <silent> <Leader>E :Dirvish %<CR>
+" map <silent> <Leader>T :tabnew <bar> Dirvish %<CR>
+" map <silent> <Leader>S :split <bar> Dirvish %<CR>
+" map <silent> <Leader>V :vsplit <bar> Dirvish %<CR>
+" " Map gh to toggle show hidden files
+" nnoremap <buffer> gh :call ToggleDotfiles()<CR>
 
 " TABS
 map <silent> <C-t> :tabnew<CR>
