@@ -4,15 +4,11 @@ call minpac#init()
 call minpac#add('k-takata/minpac', {'type':'opt'})
 
 call minpac#add('jiangmiao/auto-pairs')
-" call minpac#add('mattn/emmet-vim')
 call minpac#add('Yggdroot/indentLine')
 call minpac#add('vim-airline/vim-airline')
 call minpac#add('vim-airline/vim-airline-themes')
 call minpac#add('airblade/vim-gitgutter')
-" call minpac#add('sheerun/vim-polyglot')
 call minpac#add('mkitt/tabline.vim')
-" call minpac#add('justinmk/vim-dirvish')
-" call minpac#add('ervandew/supertab')
 
 " Tpope
 call minpac#add('tpope/vim-commentary')
@@ -25,9 +21,7 @@ call minpac#add('tpope/vim-unimpaired')
 call minpac#add('tpope/vim-vinegar')
 
 " Colorschemes
-call minpac#add('nikhilkamineni/vim-gruvbox8', {'type': 'opt'})
-call minpac#add('nikhilkamineni/Spacegray.vim', {'type': 'opt'})
-call minpac#add('srcery-colors/srcery-vim', {'type': 'opt'})
+call minpac#add('nikhilkamineni/vim-gruvbox8')
 
 " fzf
 call minpac#add('junegunn/fzf.vim')
@@ -57,7 +51,6 @@ set softtabstop=2
 set mouse=a
 set autoread
 set updatetime=100
-" set guifont=Hack:h14
 " set laststatus=2 "Always show statusline
 " set t_Co=256
 set termguicolors
@@ -78,9 +71,6 @@ nnoremap <space> za
 
 " TABLINE
 set showtabline=2
-" hi TabLine      ctermfg=Black  ctermbg=Green     cterm=NONE
-" hi TabLineFill  ctermfg=Black  ctermbg=Green     cterm=NONE
-" hi TabLineSel   ctermfg=White  ctermbg=DarkBlue  cterm=NONE
 
 " FINDING FILES
 set path+=**                " Search down into subfolders/Enables tabbing
@@ -124,21 +114,6 @@ if g:colors_name == "gruvbox8"
   let g:airline_theme="minimalist"
 endif
 
-" Spacegray
-if g:colors_name == "spacegray"
-  let g:airline_theme="raven"
-endif
-let g:spacegray_use_italics = 1
-" let g:spacegray_low_contrast = 1
-" let g:spacegray_underline_search = 1
-
-" Srcery
-if g:colors_name == "srcery"
-  " let g:airline_theme="lucius"
-  highlight EndOfBuffer ctermbg=242 ctermfg=242 guibg=#1C1B19 guifg=#1C1B19 cterm=NONE gui=NONE
-endif
-
-
 " EXPLORER SHORTCUTS
 map <silent> <Leader>e :Explore<CR>
 map <silent> <Leader>v :vsplit <bar> Explore<CR>
@@ -147,19 +122,6 @@ map <silent> <Leader>t :Texplore<CR>
 map <Leader>b :bd<CR>
 set splitbelow
 set splitright
-
-" DIRVISH
-" let g:loaded_netrwPlugin = 1
-" command! -nargs=? -complete=dir Explore Dirvish <args>
-" command! -nargs=? -complete=dir Texplore tabnew | silent Dirvish <args>
-" command! -nargs=? -complete=dir Sexplore split | silent Dirvish <args>
-" command! -nargs=? -complete=dir Vexplore vsplit | silent Dirvish <args>
-" map <silent> <Leader>E :Dirvish %<CR>
-" map <silent> <Leader>T :tabnew <bar> Dirvish %<CR>
-" map <silent> <Leader>S :split <bar> Dirvish %<CR>
-" map <silent> <Leader>V :vsplit <bar> Dirvish %<CR>
-" " Map gh to toggle show hidden files
-" nnoremap <buffer> gh :call ToggleDotfiles()<CR>
 
 " TABS
 map <silent> <C-t> :tabnew<CR>
@@ -180,43 +142,16 @@ tnoremap <silent> <C-w><C-l> <C-\><C-n><C-w>l
 tnoremap <C-h> <C-\><C-n> <bar> :tabnext<CR>
 tnoremap <C-l> <C-\><C-n> <bar> :tabprevious<CR>
 
-
 " Clear highlighted search items
 nnoremap <silent> <ESC><ESC> :let @/ = ""<cr>
 
 " Toggle line numbers
 map <leader>n :set invnumber<CR>
 
-" ALE
-let g:airline#extensions#ale#enabled = 1
-let g:ale_fixers = {
-\  'javascript': ['prettier', 'eslint'],
-\  'c': ['clang-format', 'trim_whitespace'],
-\  'cpp': ['clang-format', 'trim_whitespace'],
-\  'markdown': ['prettier'],
-\  'python': ['autopep8', 'black', 'yapf', 'isort', 'remove_trailing_lines', 'trim_whitespace'],
-\  'json': ['prettier', 'fixjson', 'trim_whitespace']
-\}
-let g:ale_linters = {
-\   'python': ['autopep8', 'flake8'],
-\   'javascript': ['eslint']
-\}
-let g:ale_javascript_prettier_options = '--single-quote'
-map <Leader>f :ALEFix<CR>
-map <Leader>a :ALEToggle<CR>
-map <Leader>A :ALEDetail<CR>
-
 " Avoid creating swap files in cwd
 set backupdir=~/.vim/backup//
 set directory=~/.vim/swap//
 set undodir=~/.vim/undo//
-
-" EMMETT
-let g:user_emmet_leader_key='<C-e>'
-
-" Supertab
-let g:SuperTabClosePreviewOnPopupClose = 1
-let g:SuperTabDefaultCompletionType = "<c-n>"
 
 " SCROLLING
 map <ScrollWheelUp> <C-Y>
