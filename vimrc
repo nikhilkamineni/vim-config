@@ -22,22 +22,6 @@ call minpac#add('tpope/vim-vinegar')
 " Colorschemes
 call minpac#add('nikhilkamineni/vim-gruvbox8')
 
-" fzf
-call minpac#add('junegunn/fzf.vim')
-
-if has('unix')
-  set rtp+=~/.fzf
-endif
-
-if has('macunix')
-  set rtp+=/usr/local/opt/fzf
-endif
-
-noremap <silent> <C-p> :GFiles<CR>
-noremap <silent> <C-b> :Buffers<CR>
-noremap <silent> <C-m> :Marks<CR>
-noremap <silent> <C-f> :Lines<CR>
-
 command! PackUpdate call minpac#update()
 command! PackClean call minpac#clean()
 
@@ -51,7 +35,6 @@ set mouse=a
 set autoread
 set updatetime=100
 " set laststatus=2 "Always show statusline
-" set t_Co=256
 set termguicolors
 " set hidden
 set showmatch
@@ -72,11 +55,11 @@ nnoremap <space> za
 set showtabline=2
 
 " FINDING FILES
-set path+=**                " Search down into subfolders/Enables tabbing
-" set wildmenu                " Command line completion
-set wildmode=list:longest   " Complete files like a shell
-set ignorecase              " Make search case insensitive
-set hlsearch                " make search highlight all matches
+set path+=**                      " Search down into subfolders/Enables tabbing
+set wildmenu                      " Command line completion
+set wildmode=longest:full,full    " Complete files like a shell
+set ignorecase                    " Make search case insensitive
+set hlsearch                      " make search highlight all matches
 set incsearch
 set diffopt+=vertical
 nnoremap * *N
@@ -93,10 +76,7 @@ autocmd FileChangedShellPost *
 " THEME RELATED "
 """""""""""""""""
 set background=dark
-" set cursorline
 let &t_ut=''
-let g:srcery_italic = 1
-colorscheme gruvbox8
 
 " Gruvbox
 " let g:gruvbox_contrast_dark = 'hard'
@@ -109,6 +89,10 @@ let g:gruvbox_italicize_strings = 1
 " let g:gruvbox_invert_tabline = 1
 " let g:gruvbox_improved_strings = 1
 " let g:gruvbox_improved_warnings = 1
+
+" Set default colorscheme here
+colorscheme gruvbox8
+
 if g:colors_name == "gruvbox8"
   let g:airline_theme="hybrid"
 endif
