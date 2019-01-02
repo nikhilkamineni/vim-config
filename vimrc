@@ -12,7 +12,6 @@ call minpac#add('mkitt/tabline.vim')
 
 " Tpope
 call minpac#add('tpope/vim-commentary')
-call minpac#add('tpope/vim-fugitive')
 call minpac#add('tpope/vim-repeat')
 call minpac#add('tpope/vim-sensible')
 call minpac#add('tpope/vim-sleuth')
@@ -111,7 +110,7 @@ let g:gruvbox_italicize_strings = 1
 " let g:gruvbox_improved_strings = 1
 " let g:gruvbox_improved_warnings = 1
 if g:colors_name == "gruvbox8"
-  let g:airline_theme="minimalist"
+  let g:airline_theme="hybrid"
 endif
 
 " EXPLORER SHORTCUTS
